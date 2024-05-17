@@ -1,0 +1,39 @@
+#!/bin/bash
+
+cwd=$(pwd)
+
+if [ $# -lt 1 ]
+then 
+    echo "Usage: ./run <dirname> ( clean )"
+    exit 1
+fi
+
+if ! [ -d $1 ]
+then
+    echo "Directory $1 does not exist"
+    exit 2
+fi
+
+if [ $# -eq 2 ] && [ $2 == "clean" ]
+then
+    rm $cwd/$1/*.o $cwd/$1/main
+    exit 0
+fi
+
+g++ $cwd/$1/*.cpp -g -Wall -O -pedantic -c
+compilation_status=${?}
+
+mv $cwd/*.o $cwd/$1
+
+g++ -g $cwd/$1/*.o -o $cwd/$1/main
+linking_status=${?}
+
+if [ $compilation_status -eq 0 ] && [ $linking_status -eq 0 ]
+then
+    echo "Build successfull. Executing"
+    ./$1/main
+else
+    echo "Build failed. Exiting"
+    exit 3
+fi
+
