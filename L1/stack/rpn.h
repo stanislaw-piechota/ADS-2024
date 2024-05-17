@@ -4,8 +4,8 @@
 
 int getPriority(char c);
 void cleanOperators(Stack<char>* operators, std::string* postfix);
-void processSign(Stack<char> *operators, std::string *postfix, char sign);
-void executeOperation(Stack<int> *operands, char operation);
+void processSign(Stack<char>* operators, std::string* postfix, char sign);
+void executeOperation(Stack<int>* operands, char operation);
 std::string infixToPostfix(std::string line);
 int parsePostfix(std::string postfix);
 

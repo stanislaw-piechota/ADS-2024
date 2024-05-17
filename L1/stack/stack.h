@@ -10,8 +10,8 @@ class Stack
 public:
     T values[MAX_SIZE - 1];
     int index = EMPTY;
-    
-    bool push(T value){
+
+    bool push(T value) {
         if (index >= MAX_SIZE - 1)
             return false;
 
@@ -19,16 +19,16 @@ public:
         return true;
     }
 
-    T pop(){
+    T pop() {
         assert(!isEmpty());
         return values[index--];
     }
 
-    bool isEmpty(){
+    bool isEmpty() {
         return (index <= EMPTY);
     }
 
-    T top(){
+    T top() {
         assert(!isEmpty());
         return *(values + index);
     }

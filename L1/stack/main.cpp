@@ -1,15 +1,15 @@
 #include "rpn.h"
 using namespace std;
 
-bool testConversion(string line, string expected){
+bool testConversion(string line, string expected) {
     return (infixToPostfix(line) == expected);
 }
 
-bool testParsing(string line, int expected){
+bool testParsing(string line, int expected) {
     return (parsePostfix(line) == expected);
 }
 
-int runTestCase(string infix, string postfix, int result){
+int runTestCase(string infix, string postfix, int result) {
     int correct = 1;
 
     cout << "\n============== " << infix << " ==============" << endl;
@@ -32,12 +32,12 @@ int runTestCase(string infix, string postfix, int result){
     cout << "==========================================\n";
 
     return correct;
-} 
+}
 
-int main(int argc, char const *argv[])
+int main(int argc, char const* argv[])
 {
     // assuming the correctness of the input line
-    
+
     // first obligatory test case
     runTestCase("17 * ( 2 + 3 ) + 4 + ( 8 * 5 )", "17 2 3 + 4 8 5 * + + *", 833);
     // second obligatory test case

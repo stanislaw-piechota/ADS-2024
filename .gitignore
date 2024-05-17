@@ -1,3 +1,4 @@
 .pylintrc
 out
 .vscode
+.editorconfig
