@@ -117,6 +117,7 @@ int parsePostfix(std::string postfix) {
             executeOperation(&operands, postfix[i]);
     }
 
-    assert(!operands.index);
+    if(operands.index || number)
+        throw(operands.index);
     return operands.pop();
 }

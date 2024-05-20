@@ -3,18 +3,25 @@
 using namespace std;
 
 bool isPalindrome(string text) {
-    size_t length = text.length(), i = 0;
+    size_t length = text.length(), i = 0, offset;
+    offset = length/2 + (length % 2);
     Stack<char> firstHalf;
+    LinkedListNode secondHalf;
+    LinkedListNode *currentNode = &secondHalf;
 
-    for (i = 0; i < length / 2; i++)
+    for (i = 0; i < length / 2; i++){
         firstHalf.push(text[i]);
+        currentNode->value = text[offset+i];
+        currentNode->next = new LinkedListNode;
+        currentNode = currentNode->next;
+    }
+    currentNode->next = nullptr;
 
-    if (length % 2)
-        i++;
-
-    while (i < length){
-        if (firstHalf.pop() != text[i++])
+    currentNode = &secondHalf;
+    while (!firstHalf.isEmpty()){
+        if (firstHalf.pop() != currentNode->value)
             return false;
+        currentNode = currentNode->next;
     }
 
     return true;

@@ -1,6 +1,5 @@
 #ifndef __STACK__
 
-#include <assert.h>
 #define MAX_SIZE 1000
 #define EMPTY -1
 
@@ -20,7 +19,8 @@ public:
     }
 
     T pop() {
-        assert(!isEmpty());
+        if (isEmpty())
+            throw (index);
         return values[index--];
     }
 
@@ -29,7 +29,8 @@ public:
     }
 
     T top() {
-        assert(!isEmpty());
+        if(isEmpty())
+            throw(index);
         return *(values + index);
     }
 };
